@@ -17,7 +17,7 @@ namespace TrimMIDI.Tool
 
         public static void Save()
         {
-            try
+            TryCatch.Do("保存日志", () =>
             {
                 if (_log.IsEmpty)
                     throw new InvalidOperationException("日志为空！");
@@ -39,11 +39,7 @@ namespace TrimMIDI.Tool
 
                 if (MsgB.YNInfo($"日志已成功保存到： {filePath}\n是否立即打开？", "提示"))
                     _ = process.Start();
-            }
-            catch (Exception ex)
-            {
-                MsgB.OkErr($"保存日志出错：{ex.Message}", "错误");
-            }
+            });
         }
     }
 }

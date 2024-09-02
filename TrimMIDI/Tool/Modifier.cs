@@ -11,18 +11,14 @@ namespace TrimMIDI.Tool
         /// </summary>
         public static void Run()
         {
-            try
+            TryCatch.Do("修改失败，可能产生了垃圾，请检查。", () =>
             {
                 Process.Add(Buffer.SaveMidiFiles);
                 if (Buffer.MidiFiles.Length < 16)
                     RunSerial();
                 else RunParallel();
                 MsgB.OkInfo($"{Buffer.MidiFiles.Length}个文件修改成功！", "成功");
-            }
-            catch (Exception ex)
-            {
-                MsgB.OkErr($"修改失败，可能产生了垃圾，请检查。\n错误：{ex.Message}", "错误");
-            }
+            });
             Process = [];
             Buffer.Clear();
         }

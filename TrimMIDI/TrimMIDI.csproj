@@ -9,7 +9,7 @@
     <StartupObject>TrimMIDI.App</StartupObject>
     <Title>TrimMIDI</Title>
     <Product>TrimMIDI</Product>
-    <Version>0.1.0</Version>
+    <Version>0.1.1</Version>
     <Authors>Garth</Authors>
     <Copyright>© Garth 2024</Copyright>
     <Description>Garth的MIDI批量修饰工具</Description>

@@ -17,9 +17,8 @@ namespace TrimMIDI
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            if (Settings.Default.FirstStart)
+            if (Settings.Default.FirstStart && Info.Welc())
             {
-                Info.Welc();
                 Settings.Default.FirstStart = false;
                 Settings.Default.Save();
             }
@@ -29,7 +28,10 @@ namespace TrimMIDI
         private void Window_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.Key == Key.F1)
-                Info.Help();
+            {
+                Clipboard.SetText("https://github.com/GarthTB/TrimMIDI");
+                MsgB.OkInfo("仓库地址已复制到剪贴板。", "提示");
+            }
             else if (e.Key == Key.F3)
                 Logger.Save();
             else if (e.Key == Key.F5)
@@ -79,15 +81,7 @@ namespace TrimMIDI
             Tx_ShortCut.Text = "15";
             Ch_Gap.IsChecked = true;
             Tx_Gap.Text = "60";
-            Ch_EQ.IsChecked = true;
-            Sl_EQ1.Value = 21;
-            Tx_EQ1.Text = "1.111";
-            Sl_EQ2.Value = 50;
-            Tx_EQ2.Text = "1.000";
-            Sl_EQ3.Value = 80;
-            Tx_EQ3.Text = "1.000";
-            Sl_EQ4.Value = 108;
-            Tx_EQ4.Text = "0.900";
+            Ch_EQ.IsChecked = false;
         }
 
         #endregion

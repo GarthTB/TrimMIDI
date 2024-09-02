@@ -19,7 +19,7 @@ namespace TrimMIDI.Tool
         {
             var midiFiles = new List<MidiFile>();
 
-            try
+            TryCatch.Do("载入MIDI文件", () =>
             {
                 if (ParsePath(path, out bool isSingleFile))
                 {
@@ -42,25 +42,17 @@ namespace TrimMIDI.Tool
                 else throw new Exception($"路径{path}不存在或不是有效的MIDI文件或文件夹！");
 
                 MidiFiles = [.. midiFiles];
-            }
-            catch (Exception ex)
-            {
-                MsgB.OkErr($"载入文件出错：{ex.Message}", "错误");
-            }
+            });
         }
 
         public static void SaveMidiFiles(MidiFile f)
         {
-            try
+            TryCatch.Do("保存MIDI文件", () =>
             {
                 var oriName = f.GetOriName();
                 var filePath = Path.Combine(_rootPath, $"{oriName}_trimmed.mid");
                 f.Write(filePath);
-            }
-            catch (Exception ex)
-            {
-                throw new Exception($"保存文件出错：{ex.Message}");
-            }
+            });
         }
 
         private static bool ParsePath(string path, out bool isSingleFile)
