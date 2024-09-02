@@ -44,6 +44,8 @@ namespace TrimMIDI.Tool
         /// </summary>
         public static void VelGradGain(IEnumerable<Note> notes, int pitch1, int pitch2, double gain1, double gain2)
         {
+            if (gain1 == 1 && gain2 == 1)
+                return;
             double GetGain(Note n)
                 => gain1 + (gain2 - gain1) * ((n.NoteNumber - pitch1) / (pitch2 - pitch1));
             var notesToGain = notes.Where(
