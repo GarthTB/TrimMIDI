@@ -1,4 +1,4 @@
-# Garth的MIDI批量修饰工具
+# 20260405 废弃此项目，部分迁移至 [PianoMidiLab](https://github.com/GarthTB/PianoMidiLab) 项目
 
 程序基于[Melanchall.DryWetMidi](https://github.com/melanchall/drywetmidi)。
 
